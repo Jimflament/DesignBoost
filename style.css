@@ -1,7 +1,7 @@
 #card-container{
-  width: 700px;
-  height: 350px;
-  background-color: #f1f1f1;
+  max-width: 700px;
+  min-height: 200px;
+  background-color: #c9c9c9;
   position: absolute;
   top: 50%;
   left: 50%;
