@@ -1,0 +1,16 @@
+#card-container{
+  width: 700px;
+  height: 350px;
+  background-color: #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+}
+body{
+    background-color: rgb(22, 22, 22);
+}
+img{
+    width: 200px;
+}

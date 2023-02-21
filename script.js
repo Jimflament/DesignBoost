@@ -1,29 +1,35 @@
 // API Connection
-fetch('https://quote.api.fdnd.nl/v1/quote')
+fetch('https://quotes.fdnd.nl/api/v1/quotes')
   .then(response => response.json())
-  .then(data => {
- 
-// Card generating and placing
+  .then((data) => {
+
+// Generate HTML
   const genCardContainer = document.createElement('article');
-  genCardContainer.setAttribute('id', 'card-container');
-
   const genCardHeading = document.createElement('h1');
-  genCardHeading.setAttribute('id', 'card-heading')
-  genCardContainer.appendChild(genCardHeading);
-
   const genCardText = document.createElement('p');
-  genCardText.setAttribute('id', 'card-text')
-  genCardContainer.appendChild(genCardText);
 
+// Give HTML id's
+  genCardContainer.setAttribute('id', 'card-container');
+  genCardHeading.setAttribute('id', 'card-heading')
+  genCardText.setAttribute('id', 'card-text')
+  
+// Adding Children to parents
+  genCardContainer.appendChild(genCardHeading);
+  genCardContainer.appendChild(genCardText);
+  
+// Adding the card container to the body
   document.body.appendChild(genCardContainer);
 
-//   HTML Variables
-  const arrayNum = Math.floor(Math.random() * 15);
-  const cardContainer = document.getElementById('card-container');
+// Choosing a random quote
+  let arrayNum = Math.floor(Math.random() * 16);
+  let randomQuote = data.quotes[arrayNum];
+  
+// turning the id's into variables
   const cardHeading = document.getElementById('card-heading');
   const cardText = document.getElementById('card-text');
 
-//   HTML Content
-  cardHeading.innerHTML = data.data[arrayNum].name;
-  cardText.innerHTML = data.data[arrayNum].text
+
+// Inserting HTML content
+  cardHeading.innerHTML = randomQuote.author;
+  cardText.innerHTML = randomQuote.text;
 })
