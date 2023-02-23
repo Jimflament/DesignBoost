@@ -21,7 +21,7 @@ fetch('https://quotes.fdnd.nl/api/v1/quotes')
   document.body.appendChild(genCardContainer);
 
 // Choosing a random quote
-  let arrayNum = Math.floor(Math.random() * 16);
+  let arrayNum = Math.floor(Math.random() * 11);
   let randomQuote = data.quotes[arrayNum];
   
 // turning the id's into variables
