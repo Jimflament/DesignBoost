@@ -1,35 +1,34 @@
 // API Connection
-fetch('https://quotes.fdnd.nl/api/v1/quotes')
+loading('on');
+fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quotes')
   .then(response => response.json())
   .then((data) => {
-
-// Generate HTML
-  const genCardContainer = document.createElement('article');
-  const genCardHeading = document.createElement('h1');
-  const genCardText = document.createElement('p');
-
-// Give HTML id's
-  genCardContainer.setAttribute('id', 'card-container');
-  genCardHeading.setAttribute('id', 'card-heading')
-  genCardText.setAttribute('id', 'card-text')
+    loading('off');
+    renderQuotes(data);
+    document.getElementById('quote_reset').onclick = function(){renderQuotes(data)};
+  })
   
-// Adding Children to parents
-  genCardContainer.appendChild(genCardHeading);
-  genCardContainer.appendChild(genCardText);
+  function renderQuotes(quoteData){
+    // Choosing a random quote
+    let arrayNum = Math.floor(Math.random() * 10);
+    let randomQuote = quoteData[arrayNum];
+    
+    // turning the id's into variables
+    const cardHeading = document.getElementById('card-heading');
+    const cardText = document.getElementById('card-text');
+    
+    // Inserting HTML content
+    cardHeading.innerHTML = randomQuote.author;
+    cardText.innerHTML = randomQuote.text;
+  }
   
-// Adding the card container to the body
-  document.body.appendChild(genCardContainer);
-
-// Choosing a random quote
-  let arrayNum = Math.floor(Math.random() * 11);
-  let randomQuote = data.quotes[arrayNum];
-  
-// turning the id's into variables
-  const cardHeading = document.getElementById('card-heading');
-  const cardText = document.getElementById('card-text');
-
-
-// Inserting HTML content
-  cardHeading.innerHTML = randomQuote.author;
-  cardText.innerHTML = randomQuote.text;
-})
+  function loading(state){
+    
+    if(state === 'on'){
+      document.getElementById('card-container').style.display = 'none';
+    }else{
+      document.getElementById('card-container').style.display = 'flex';
+      document.getElementById('loading-screen').style.display = 'none';
+    }
+    
+  }
