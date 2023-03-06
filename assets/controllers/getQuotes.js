@@ -1,13 +1,24 @@
 const app = document.querySelector('.app');
 
-// API Connection
+function getQuotes(){
+  const markup = `
+    <section class="quotes">
+      <article class="quote-container">
+          <h1 class="quote-name"></h1>
+          <p class="quote-text"></p>
+      </article>
+      <button class="quote-refresh">New quote</button>
+    </section>
+  `
+  app.innerHTML = markup;
+  // API Connection
 loading('on');
 fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quotes')
   .then(response => response.json())
   .then((data) => {
-    loading('off');
+    // loading('off');
     renderQuotes(data);
-    document.getElementById('quote_reset').onclick = function(){renderQuotes(data)};
+    document.querySelector('.quote-refresh').onclick = function() {renderQuotes(data)};
   })
   
   function renderQuotes(quoteData){
@@ -16,22 +27,28 @@ fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quo
     let randomQuote = quoteData[arrayNum];
     
     // turning the id's into variables
-    const cardHeading = document.getElementById('card-heading');
-    const cardText = document.getElementById('card-text');
+    const quoteHeading = document.querySelector('.quote-name');
+    const quoteText = document.querySelector('.quote-text');
     
     // Inserting HTML content
-    cardHeading.innerHTML = randomQuote.author;
-    cardText.innerHTML = randomQuote.text;
+    quoteHeading.innerHTML = randomQuote.author;
+    quoteText.innerHTML = randomQuote.text;
   }
-  
+
   function loading(state){
-    
     if(state === 'on'){
-      document.getElementById('card-container').style.display = 'none';
+      document.querySelector('.quote-container').style.display='none';
+      document.querySelector('.quote-refresh').style.display='none';
+
+      const createLoading = document.createElement('h1');
+      createLoading.setAttribute('class', 'loading-text');
+      createLoading.innerHTML = 'Loading';
+      console.log(createLoading)
     }else{
-      document.getElementById('card-container').style.display = 'flex';
-      document.getElementById('loading-screen').style.display = 'none';
+      document.querySelector('.quote-container').style.display='flex';
+      document.querySelector('.quote-refresh').style.display='block';
     }
-    
   }
-export default getHome;
+}
+
+export default getQuotes;

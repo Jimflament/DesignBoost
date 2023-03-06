@@ -12,7 +12,7 @@ body{
   align-items: center;
   background-color: rgb(186, 186, 186);
 }
-.home{
+section{
   height: 20%;
   width: 40%;
   display: flex;
@@ -24,7 +24,7 @@ body{
   color: white;
   border-radius: 20px;
 }
-.intro{
+article{
   width: 100%;
   height: 80%;
   display: flex;
@@ -32,7 +32,7 @@ body{
   align-items: start;
   flex-direction: column;
 }
-.home button{
+button{
   width: 100px;
   height: 30px;
   border: 1px solid black;
@@ -40,7 +40,7 @@ body{
   background-color: black;
   color: white;
 }
-.home button:hover{
+button:hover{
   border: 1px solid white;
   background-color: white;
   color: black;
