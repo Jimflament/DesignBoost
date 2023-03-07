@@ -12,17 +12,17 @@ As a student Digital Design, I want to look at inspiring web design quotes, to g
 
 Ik ben begonnen met het sketchen van een simple UI en heb daarna een flow eraan toegevoegd en een breakdown-graph.
 
-![IMG_2727.JPEG](Web%20App%20From%20Scratch%201c451e0dbb2f4471a56d06a5a4e932a0/IMG_2727.jpeg)
+![IMG_2727.JPEG](https://github.com/Jimflament/DesignBoost/blob/main/Images/IMG_2727.JPEG)
 
-![IMG_2728.JPEG](Web%20App%20From%20Scratch%201c451e0dbb2f4471a56d06a5a4e932a0/IMG_2728.jpeg)
+![IMG_2728.JPEG](https://github.com/Jimflament/DesignBoost/blob/main/Images/IMG_2728.JPEG)
 
-![IMG_2729.JPEG](Web%20App%20From%20Scratch%201c451e0dbb2f4471a56d06a5a4e932a0/IMG_2729.jpeg)
+![IMG_2729.JPEG](https://github.com/Jimflament/DesignBoost/blob/main/Images/IMG_2729.JPEG)
 
 ## Activity diagram
 
 Hier staat een activity diagram met een wireflow, controlflow en swimlane met url en hash.
 
-![Schermafbeelding 2023-03-07 164217.png](Web%20App%20From%20Scratch%201c451e0dbb2f4471a56d06a5a4e932a0/Schermafbeelding_2023-03-07_164217.png)
+![Schermafbeelding 2023-03-07 164217.png](https://github.com/Jimflament/DesignBoost/blob/main/Images/Schermafbeelding%202023-03-07%20164217.png)
 
 ## Versie 1 - Fetch API & ideal state
 
