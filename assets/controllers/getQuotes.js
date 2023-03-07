@@ -43,7 +43,7 @@ fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quo
       quoteContainer.style.display='none';
       quoteRefresh.style.display='none';
       loadingText.style.display='inline';
-      loadingText.innerHTML = 'Error please reload page';
+      loadingText.innerHTML = 'Error, please reload page';
     }
     
     // Inserting HTML content
