@@ -1,5 +1,5 @@
 const app = document.querySelector('.app');
-
+// Function that generates HTML for the home page
 function getHome() {
     const markup = `
     <section class="home">
@@ -12,5 +12,5 @@ function getHome() {
     `
     app.innerHTML = markup;
 }
-
+// Export the getHome function
 export default getHome;

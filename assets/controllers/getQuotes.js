@@ -1,5 +1,5 @@
 const app = document.querySelector('.app');
-
+// Function that generates HTML and puts a random quote inside
 function getQuotes(){
   const markup = `
     <section class="quotes">
@@ -12,53 +12,57 @@ function getQuotes(){
     </section>
   `
   app.innerHTML = markup;
-  // API Connection
-
+  // Variables
+  const quoteContainer = document.querySelector('.quote-container');
+  const quoteHeading = document.querySelector('.quote-name');
+  const quoteText = document.querySelector('.quote-text');
+  const quoteRefresh = document.querySelector('.quote-refresh');
+  const loadingText = document.querySelector('.loading-text');
+  // Start Loading
 loading('on');
+  // Fetching API
 fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quotes')
   .then(response => response.json())
   .then((data) => {
+  // API Fetched and loading turns off
     loading('off');
-    renderQuotes(data);
-    document.querySelector('.quote-name').innerHTML = 'Click the button to generate a new quote.';
-    document.querySelector('.quote-text').innerHTML = '';
-    document.querySelector('.quote-refresh').onclick = function() {renderQuotes(data)};
+  // App gets put into empty state
+    quoteHeading.innerHTML = 'Click the button to generate a new quote.';
+    quoteText.innerHTML = '';
+  // onclick the button will render a quote
+    quoteRefresh.onclick = function() {renderQuotes(data)};
   })
-  
+  // Function to render a random quote
   function renderQuotes(quoteData){
     // Choosing a random quote
     const arrayNum = Math.floor(Math.random() * 11);
     const randomQuote = quoteData[arrayNum];
     
-    // turning the id's into variables
-    const quoteHeading = document.querySelector('.quote-name');
-    const quoteText = document.querySelector('.quote-text');
-
     // Error message
     if(arrayNum === undefined || arrayNum > 11){
-      document.querySelector('.quote-container').style.display='none';
-      document.querySelector('.quote-refresh').style.display='none';
-      document.querySelector('.loading-text').style.display='inline';
-      document.querySelector('.loading-text').innerHTML = 'Error please reload page';
+      quoteContainer.style.display='none';
+      quoteRefresh.style.display='none';
+      loadingText.style.display='inline';
+      loadingText.innerHTML = 'Error please reload page';
     }
     
     // Inserting HTML content
     quoteHeading.innerHTML = randomQuote.author;
     quoteText.innerHTML = randomQuote.text;
   }
-  
+    // Loading function
   function loading(state){
     if(state === 'on'){
-      document.querySelector('.quote-container').style.display='none';
-      document.querySelector('.quote-refresh').style.display='none';
-      document.querySelector('.loading-text').style.display='inline';
+      quoteContainer.style.display='none';
+      quoteRefresh.style.display='none';
+      loadingText.style.display='inline';
 
     }else{
-      document.querySelector('.quote-container').style.display='flex';
-      document.querySelector('.quote-refresh').style.display='block';
-      document.querySelector('.loading-text').style.display='none';
+      quoteContainer.style.display='flex';
+      quoteRefresh.style.display='block';
+      loadingText.style.display='none';
     }
   }
 }
-
+// Export the getQuotes function
 export default getQuotes;
