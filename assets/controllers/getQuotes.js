@@ -20,17 +20,27 @@ fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quo
   .then((data) => {
     loading('off');
     renderQuotes(data);
+    document.querySelector('.quote-name').innerHTML = 'Click the button to generate a new quote.';
+    document.querySelector('.quote-text').innerHTML = '';
     document.querySelector('.quote-refresh').onclick = function() {renderQuotes(data)};
   })
   
   function renderQuotes(quoteData){
     // Choosing a random quote
-    let arrayNum = Math.floor(Math.random() * 11);
-    let randomQuote = quoteData[arrayNum];
+    const arrayNum = Math.floor(Math.random() * 11);
+    const randomQuote = quoteData[arrayNum];
     
     // turning the id's into variables
     const quoteHeading = document.querySelector('.quote-name');
     const quoteText = document.querySelector('.quote-text');
+
+    // Error message
+    if(arrayNum === undefined || arrayNum > 11){
+      document.querySelector('.quote-container').style.display='none';
+      document.querySelector('.quote-refresh').style.display='none';
+      document.querySelector('.loading-text').style.display='inline';
+      document.querySelector('.loading-text').innerHTML = 'Error please reload page';
+    }
     
     // Inserting HTML content
     quoteHeading.innerHTML = randomQuote.author;
@@ -49,7 +59,6 @@ fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quo
       document.querySelector('.loading-text').style.display='none';
     }
   }
-
 }
 
 export default getQuotes;
