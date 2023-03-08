@@ -13,7 +13,6 @@ function getQuotes(){
   `
   app.innerHTML = markup;
   // API Connection
-
 loading('on');
 fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quotes')
   .then(response => response.json())
@@ -39,7 +38,7 @@ fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quo
       document.querySelector('.quote-container').style.display='none';
       document.querySelector('.quote-refresh').style.display='none';
       document.querySelector('.loading-text').style.display='inline';
-      document.querySelector('.loading-text').innerHTML = 'Error please reload page';
+      document.querySelector('.loading-text').innerHTML = 'Error, please reload page';
     }
     
     // Inserting HTML content
