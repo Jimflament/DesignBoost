@@ -1,7 +1,8 @@
 # Web App From Scratch
 
 ---
-Om mijn singlepage web app te gebruiken ga je naar https://jimflament.github.io/DesignBoost/. Dan druk je op start om de api te laten en dan druk je op new quote om een quote te renderen.
+Om mijn single page web app te gebruiken ga je naar https://jimflament.github.io/DesignBoost/. Dan druk je op start om de api te laden en dan druk je op new quote om een quote te renderen.
+
 User story
 
 **Ik heb voor de volgende user story gekozen:** 
