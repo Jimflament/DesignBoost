@@ -24,14 +24,19 @@ loading('on');
 fetch('https://opensheet.elk.sh/1NNaZeJXR-AaBeRoIrphPCTeAx1ltZ4ltH0yGV9_WIQ0/quotes')
   .then(response => response.json())
   .then((data) => {
+    // Load API data in local storage
+    localStorage.setItem('apiData', JSON.stringify(data));
   // API Fetched and loading turns off
     loading('off');
   // App gets put into empty state
     quoteHeading.innerHTML = 'Click the button to generate a new quote.';
     quoteText.innerHTML = '';
   // onclick the button will render a quote
-    quoteRefresh.onclick = function() {renderQuotes(data)};
+    quoteRefresh.onclick = function() {renderQuotes(quoteData)};
   })
+  let storedData = JSON.parse(localStorage.getItem('apiData'));
+  let quoteData = storedData.map(item => ({author: item.author, text: item.text}));
+  console.log(quoteData)
   // Function to render a random quote
   function renderQuotes(quoteData){
     // Choosing a random quote
